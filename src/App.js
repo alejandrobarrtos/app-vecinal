@@ -2,35 +2,33 @@ import React, { useState } from "react";
 
 function App() {
   const [reporte, setReporte] = useState("");
-  const [listaReportes, setListaReportes] = useState([]);
+  const [reportes, setReportes] = useState([]);
 
   const agregarReporte = () => {
     if (reporte === "") return;
-    setListaReportes([...listaReportes, reporte]);
+    setReportes([...reportes, reporte]);
     setReporte("");
   };
 
   return (
-    <div style={{ padding: "30px", fontFamily: "Arial" }}>
-      <h1>Sistema Vecinal</h1>
-      <h3>Registro de incidencias</h3>
+    <div style={{ padding: "20px", fontFamily: "Arial" }}>
+      <h1>Plataforma de Administración Comunal</h1>
+
+      <p>Registro de incidencas vecinales</p>
 
       <input
         type="text"
-        placeholder="Describe el problema..."
+        placeholder="Escribir problema"
         value={reporte}
         onChange={(e) => setReporte(e.target.value)}
-        style={{ padding: "10px", width: "300px" }}
       />
 
-      <button onClick={agregarReporte} style={{ marginLeft: "10px", padding: "10px" }}>
-        Reportar
-      </button>
+      <button onClick={agregarReporte}>Registrar</button>
 
-      <h3>Reportes registrados</h3>
+      <h2>Lista de reportes</h2>
 
       <ul>
-        {listaReportes.map((item, index) => (
+        {reportes.map((item, index) => (
           <li key={index}>{item}</li>
         ))}
       </ul>
